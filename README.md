@@ -81,7 +81,13 @@ npm test
 - Memory usage: Minimal footprint
 
 ## Contributing
-PRs welcome. Ensure tests pass and bundle size remains under 15KB.
+PRs welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
+
+## Code of Conduct
+Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) before contributing.
+
+## Security
+See [SECURITY.md](./SECURITY.md) for security-related information.
 
 ## License
 MIT
