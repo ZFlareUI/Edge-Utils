@@ -2,6 +2,60 @@
 
 Platform-agnostic utilities for enterprise edge computing and serverless environments with production-grade features for modern web applications.
 
+## Introduction
+
+Edge-utils is a comprehensive toolkit designed specifically for edge computing and serverless environments. It provides production-ready utilities that work seamlessly across multiple platforms including Cloudflare Workers, Vercel Edge Functions, Deno Deploy, and traditional Node.js serverless functions.
+
+### Key Benefits
+
+- Platform Agnostic: Works across all major edge platforms without code changes
+- High Performance: Optimized for edge runtimes with minimal cold start impact
+- Production Ready: Enterprise-grade security, monitoring, and error handling
+- Observable: Built-in metrics, logging, and distributed tracing
+- Fault Tolerant: Circuit breakers, retries, and graceful degradation
+- Global Scale: Geo-aware routing and load balancing
+- Secure: Comprehensive security headers, CSRF protection, and DDoS mitigation
+- Scalable: Connection pooling, rate limiting, and resource management
+
+### Architecture
+
+Edge-utils is built with a modular architecture where you can pick and choose the features you need:
+
+- **Core**: Platform detection, error handling, and utility functions
+- **Caching**: Memory and edge-native caching with TTL and invalidation
+- **Authentication**: JWT, API keys, and session management
+- **Security**: Headers, CSRF, XSS prevention, and DDoS protection
+- **Rate Limiting**: Multiple algorithms with distributed storage support
+- **Load Balancing**: Intelligent request distribution with health monitoring
+- **Monitoring**: Metrics, structured logging, and distributed tracing
+- **Geo**: Location-aware routing and region selection
+- **Performance**: Cold start optimization and response streaming
+- **GraphQL**: Client, schema validation, and middleware
+- **WebSocket**: Real-time communication with connection management
+
+### Use Cases
+
+- **API Gateways**: Rate limiting, authentication, and request routing
+- **CDNs**: Caching, compression, and geo-aware content delivery
+- **Microservices**: Service discovery, load balancing, and circuit breaking
+- **Real-time Apps**: WebSocket connections, broadcasting, and presence
+- **Serverless Functions**: Cold start optimization and error handling
+- **Edge Computing**: Global distribution and performance optimization
+
+## Documentation
+
+For detailed documentation on each module, see the following guides:
+
+- **[GraphQL](docs/graphql.md)** - GraphQL client, schema validation, query building, and middleware
+- **[Authentication](docs/auth.md)** - JWT tokens, API keys, session management, and authorization
+- **[Caching](docs/caching.md)** - Memory and edge caching, cache warming, invalidation strategies
+- **[Security](docs/security.md)** - Security headers, CSRF protection, XSS prevention, DDoS mitigation
+- **[Monitoring](docs/monitoring.md)** - Metrics collection, structured logging, distributed tracing, health checks
+- **[Load Balancing](docs/load-balancing.md)** - Intelligent request distribution, health monitoring, circuit breakers
+- **[Rate Limiting](docs/rate-limiting.md)** - Multiple algorithms, key generators, distributed storage
+- **[Content Negotiation](docs/content-negotiation.md)** - Response formatting, compression, validation
+- **[WebSocket](docs/websocket.md)** - Real-time communication, connection management, broadcasting
+
 ## Quick Start
 ```js
 const { createEdgeHandler, RateLimitManager, SecurityHeadersManager } = require('edge-utils');
