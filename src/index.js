@@ -15,6 +15,71 @@ const { streamResponse, generateStream, createReadableStream } = require('./perf
 const { compressGzip, compressBrotli } = require('./performance/compression');
 const { EdgeError, handleError, retryWithBackoff, circuitBreaker } = require('./errors');
 
+// Rate Limiting
+const {
+  TokenBucketLimiter,
+  SlidingWindowLimiter,
+  RateLimitManager
+} = require('./rate-limiting');
+
+// Security
+const {
+  SecurityHeadersManager,
+  CSRFProtection,
+  XSSPrevention,
+  RequestValidator,
+  DDoSProtection
+} = require('./security');
+
+// Authentication & Authorization
+const {
+  JWTManager,
+  APIKeyManager,
+  EdgeSessionManager
+} = require('./auth');
+
+// Monitoring & Observability
+const {
+  MetricsCollector,
+  StructuredLogger,
+  TracingManager,
+  HealthCheckManager
+} = require('./monitoring');
+
+// Load Balancing
+const {
+  LoadBalancer,
+  CircuitBreaker,
+  StickySessionManager
+} = require('./load-balancing');
+
+// Content Negotiation
+const {
+  ContentNegotiator,
+  QualityValue,
+  createContentNegotiationMiddleware
+} = require('./content-negotiation');
+
+// WebSocket
+const {
+  WebSocketManager,
+  WebSocketUtils,
+  WebSocketState,
+  MessageType,
+  createWebSocketMiddleware
+} = require('./websocket');
+
+// GraphQL
+const {
+  GraphQLClient,
+  GraphQLError,
+  GraphQLSchema,
+  GraphQLQueryBuilder,
+  createGraphQLMiddleware,
+  OperationType,
+  ErrorSeverity
+} = require('./graphql');
+
 module.exports = {
   createEdgeHandler,
   detectPlatform,
@@ -39,5 +104,46 @@ module.exports = {
   EdgeError,
   handleError,
   retryWithBackoff,
-  circuitBreaker
+  circuitBreaker,
+  // Rate Limiting
+  TokenBucketLimiter,
+  SlidingWindowLimiter,
+  RateLimitManager,
+  // Security
+  SecurityHeadersManager,
+  CSRFProtection,
+  XSSPrevention,
+  RequestValidator,
+  DDoSProtection,
+  // Authentication & Authorization
+  JWTManager,
+  APIKeyManager,
+  EdgeSessionManager,
+  // Monitoring & Observability
+  MetricsCollector,
+  StructuredLogger,
+  TracingManager,
+  HealthCheckManager,
+  // Load Balancing
+  LoadBalancer,
+  CircuitBreaker,
+  StickySessionManager,
+  // Content Negotiation
+  ContentNegotiator,
+  QualityValue,
+  createContentNegotiationMiddleware,
+  // WebSocket
+  WebSocketManager,
+  WebSocketUtils,
+  WebSocketState,
+  MessageType,
+  createWebSocketMiddleware,
+  // GraphQL
+  GraphQLClient,
+  GraphQLError,
+  GraphQLSchema,
+  GraphQLQueryBuilder,
+  createGraphQLMiddleware,
+  OperationType,
+  ErrorSeverity
 };

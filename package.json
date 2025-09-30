@@ -12,9 +12,37 @@
     "./cache": {
       "import": "./dist/cache.esm.js",
       "require": "./dist/cache.js"
+    },
+    "./rate-limiting": {
+      "import": "./dist/rate-limiting.esm.js",
+      "require": "./dist/rate-limiting.js"
+    },
+    "./security": {
+      "import": "./dist/security.esm.js",
+      "require": "./dist/security.js"
+    },
+    "./auth": {
+      "import": "./dist/auth.esm.js",
+      "require": "./dist/auth.js"
+    },
+    "./monitoring": {
+      "import": "./dist/monitoring.esm.js",
+      "require": "./dist/monitoring.js"
+    },
+    "./graphql": {
+      "import": "./dist/graphql.esm.js",
+      "require": "./dist/graphql.js"
     }
   },
-  "keywords": ["edge", "serverless", "cloudflare", "vercel", "deno", "lambda", "edge-computing"],
+  "keywords": [
+    "edge",
+    "serverless",
+    "cloudflare",
+    "vercel",
+    "deno",
+    "lambda",
+    "edge-computing"
+  ],
   "engines": {
     "node": ">=16"
   },
@@ -43,5 +71,12 @@
     "dist",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "dependencies": {
+    "@types/ajv": "^0.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "ajv": "^8.17.1",
+    "crypto-js": "^4.2.0",
+    "jsonwebtoken": "^9.0.2"
+  }
 }
