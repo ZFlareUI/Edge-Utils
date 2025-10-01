@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="#1a1a1a"/>
+  <text x="10" y="20" fill="#0D9373" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Edge-Utils</text>
+  <text x="10" y="40" fill="#07C983" font-family="Arial, sans-serif" font-size="12">Edge Computing Made Simple</text>
+  <circle cx="170" cy="30" r="15" fill="#0D9373"/>
+  <text x="170" y="35" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12" font-weight="bold">E</text>
+</svg>

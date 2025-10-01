@@ -1001,5 +1001,4 @@ When contributing to content negotiation utilities:
 
 ## License
 
-MIT</content>
-<parameter name="filePath">/Users/pratikacharya/Desktop/package/edge-utils/docs/content-negotiation.md
+MIT

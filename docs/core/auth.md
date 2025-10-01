@@ -789,5 +789,4 @@ When contributing to authentication utilities:
 
 ## License
 
-MIT</content>
-<parameter name="filePath">/Users/pratikacharya/Desktop/package/edge-utils/docs/auth.md
+MIT

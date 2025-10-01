@@ -587,5 +587,4 @@ When contributing to the GraphQL utilities:
 
 ## License
 
-MIT</content>
-<parameter name="filePath">/Users/pratikacharya/Desktop/package/edge-utils/docs/graphql.md
+MIT

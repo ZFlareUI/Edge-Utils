@@ -1,0 +1,74 @@
+{
+  "name": "Edge-Utils",
+  "theme": "mint",
+  "colors": {
+    "primary": "#0D9373"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "quick-start"
+        ]
+      },
+      {
+        "group": "Core Features",
+        "pages": [
+          "core/auth",
+          "core/caching",
+          "core/graphql",
+          "core/websocket"
+        ]
+      },
+      {
+        "group": "Edge Computing",
+        "pages": [
+          "edge/geo",
+          "edge/performance",
+          "edge/load-balancing",
+          "edge/rate-limiting"
+        ]
+      },
+      {
+        "group": "API Reference",
+        "pages": [
+          "api/auth-manager",
+          "api/cache-manager",
+          "api/geo-utils",
+          "api/graphql-client",
+          "api/monitoring-utils",
+          "api/performance-utils",
+          "api/security-utils",
+          "api/websocket-manager"
+        ]
+      },
+      {
+        "group": "Examples",
+        "pages": [
+          "examples/basic-usage",
+          "examples/advanced-patterns",
+          "examples/platform-specific"
+        ]
+      },
+      {
+        "group": "Security",
+        "pages": [
+          "security/overview",
+          "security/content-negotiation",
+          "security/monitoring"
+        ]
+      },
+      {
+        "group": "Contributing",
+        "pages": [
+          "contributing/overview",
+          "contributing/development",
+          "contributing/testing"
+        ]
+      }
+    ]
+  }
+}

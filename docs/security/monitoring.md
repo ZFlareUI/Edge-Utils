@@ -1101,5 +1101,4 @@ When contributing to monitoring utilities:
 
 ## License
 
-MIT</content>
-<parameter name="filePath">/Users/pratikacharya/Desktop/package/edge-utils/docs/monitoring.md
+MIT

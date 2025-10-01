@@ -1007,5 +1007,4 @@ When contributing to load balancing utilities:
 
 ## License
 
-MIT</content>
-<parameter name="filePath">/Users/pratikacharya/Desktop/package/edge-utils/docs/load-balancing.md
+MIT

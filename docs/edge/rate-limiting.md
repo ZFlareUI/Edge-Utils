@@ -910,5 +910,4 @@ When contributing to rate limiting utilities:
 
 ## License
 
-MIT</content>
-<parameter name="filePath">/Users/pratikacharya/Desktop/package/edge-utils/docs/rate-limiting.md
+MIT
