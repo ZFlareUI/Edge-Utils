@@ -1,6 +1,6 @@
 {
   "name": "edge-utils",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Platform-agnostic utilities for edge computing and serverless environments",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -41,7 +41,19 @@
     "vercel",
     "deno",
     "lambda",
-    "edge-computing"
+    "edge-computing",
+    "rate-limiting",
+    "caching",
+    "authentication",
+    "security",
+    "monitoring",
+    "load-balancing",
+    "graphql",
+    "websocket",
+    "jwt",
+    "api-gateway",
+    "middleware",
+    "distributed-systems"
   ],
   "engines": {
     "node": ">=16"
@@ -58,8 +70,12 @@
     "build": "rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "lint": "echo 'No linter configured'",
-    "prepublishOnly": "npm run build && npm test"
+    "prepublishOnly": "npm run build && npm test",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.0",

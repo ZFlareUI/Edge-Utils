@@ -12,7 +12,12 @@ class EdgeError extends Error {
 
 function handleError(error, options = {}) {
   if (options.log) {
-    console.error(error);
+    // Log to stderr if available, otherwise use appropriate logger
+    if (typeof process !== 'undefined' && process.stderr) {
+      process.stderr.write(`[ERROR] ${error.stack || error.message}\n`);
+    } else if (options.logger && typeof options.logger.error === 'function') {
+      options.logger.error('Error occurred', { error: error.message, stack: error.stack });
+    }
   }
   if (options.retry) {
     // Implement retry logic

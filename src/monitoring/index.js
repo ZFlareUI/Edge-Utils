@@ -229,6 +229,7 @@ class StructuredLogger {
     this.sampling = options.sampling || {};
     this.redaction = options.redaction || [];
     this.aggregation = options.aggregation || {};
+    this.forceConsoleLog = options.forceConsoleLog !== false; // Default to true for compatibility
     this.levels = {
       debug: 0,
       info: 1,
@@ -338,7 +339,22 @@ class StructuredLogger {
 
     // Format and output
     const formatted = this._format(logEntry);
-    console.log(formatted);
+    
+    // Always use console.log for testing/development compatibility
+    // In production, set forceConsoleLog: false and implement custom handler
+    if (this.forceConsoleLog) {
+      console.log(formatted);
+    } else if (typeof process !== 'undefined' && process.stderr) {
+      // Node.js environment with explicit process output
+      if (level === 'error' || level === 'fatal') {
+        process.stderr.write(formatted + '\n');
+      } else {
+        process.stdout.write(formatted + '\n');
+      }
+    } else {
+      // Browser or edge runtime fallback
+      console.log(formatted);
+    }
 
     // Aggregation
     this._aggregate(logEntry);

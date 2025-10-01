@@ -13,6 +13,7 @@ class CacheAsidePattern {
   constructor(cache, fetcher, options = {}) {
     this.cache = cache;
     this.fetcher = fetcher;
+    this.options = options;
     this.ttl = options.ttl || 300000; // 5 minutes default
     this.tags = new Map(); // key -> Set of tags
   }
@@ -38,7 +39,10 @@ class CacheAsidePattern {
 
       return value;
     } catch (error) {
-      console.error(`Cache-aside error for key ${key}:`, error);
+      // Log error silently or use provided error handler
+      if (this.options.onError && typeof this.options.onError === 'function') {
+        this.options.onError(`Cache-aside error for key ${key}`, error);
+      }
       // On error, try to fetch directly without caching
       return await this.fetcher(key);
     }
@@ -86,6 +90,7 @@ class WriteThroughPattern {
   constructor(cache, writer, options = {}) {
     this.cache = cache;
     this.writer = writer;
+    this.options = options;
     this.ttl = options.ttl || 300000;
   }
 
@@ -99,7 +104,10 @@ class WriteThroughPattern {
 
       return true;
     } catch (error) {
-      console.error(`Write-through error for key ${key}:`, error);
+      // Log error silently or use provided error handler
+      if (this.options.onError && typeof this.options.onError === 'function') {
+        this.options.onError(`Write-through error for key ${key}`, error);
+      }
       throw error;
     }
   }
@@ -117,6 +125,7 @@ class WriteBehindPattern {
   constructor(cache, writer, options = {}) {
     this.cache = cache;
     this.writer = writer;
+    this.options = options;
     this.ttl = options.ttl || 300000;
     this.flushInterval = options.flushInterval || 30000; // 30 seconds
     this.pendingWrites = new Map();
@@ -152,7 +161,10 @@ class WriteBehindPattern {
         try {
           await this.writer(key, value);
         } catch (error) {
-          console.error(`Failed to flush write for key ${key}:`, error);
+          // Log error silently or use provided error handler
+          if (this.options.onError && typeof this.options.onError === 'function') {
+            this.options.onError(`Failed to flush write for key ${key}`, error);
+          }
           // Re-queue failed writes
           this.pendingWrites.set(key, { value, timestamp: Date.now() });
         }
@@ -253,6 +265,7 @@ class PriorityCacheWarmer {
   constructor(cache, fetcher, options = {}) {
     this.cache = cache;
     this.fetcher = fetcher;
+    this.options = options;
     this.concurrency = options.concurrency || 5;
     this.retryAttempts = options.retryAttempts || 3;
     this.queue = [];
@@ -301,7 +314,10 @@ class PriorityCacheWarmer {
             this.queue.push({ ...item, priority: item.priority - 1 });
             this.queue.sort((a, b) => b.priority - a.priority);
           } else {
-            console.error(`Failed to warm cache for key ${item.key} after ${item.attempts} attempts:`, error);
+            // Log error silently or use provided error handler
+            if (this.options.onError && typeof this.options.onError === 'function') {
+              this.options.onError(`Failed to warm cache for key ${item.key} after ${item.attempts} attempts`, error);
+            }
           }
         }
       }
@@ -317,6 +333,7 @@ class PriorityCacheWarmer {
 class DistributedCacheCoordinator {
   constructor(caches, options = {}) {
     this.caches = Array.isArray(caches) ? caches : [caches];
+    this.options = options;
     this.replicationFactor = options.replicationFactor || 1;
     this.consistencyLevel = options.consistencyLevel || 'eventual'; // eventual, strong
   }
@@ -346,9 +363,12 @@ class DistributedCacheCoordinator {
       await Promise.all(promises);
     } else {
       // Fire and forget for eventual consistency
-      Promise.all(promises).catch(error =>
-        console.error('Distributed cache replication error:', error)
-      );
+      Promise.all(promises).catch(error => {
+        // Log error silently or use provided error handler
+        if (this.options.onError && typeof this.options.onError === 'function') {
+          this.options.onError('Distributed cache replication error', error);
+        }
+      });
     }
 
     return true;

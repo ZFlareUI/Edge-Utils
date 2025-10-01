@@ -11,10 +11,13 @@ function minimizeColdStart(init) {
   }
 }
 
-function keepAlive(intervalMs = 300000) { // 5 minutes
+function keepAlive(intervalMs = 300000, onPing = null) { // 5 minutes
   setInterval(() => {
     // Ping to keep function warm
-    console.log('Keeping alive');
+    if (onPing && typeof onPing === 'function') {
+      onPing();
+    }
+    // Silent operation - no console output in production
   }, intervalMs);
 }
 
