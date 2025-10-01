@@ -1,6 +1,6 @@
 # NPM Publishing Checklist for Edge-Utils v0.1.0
 
-## Pre-Flight Checks ✅
+## Pre-Flight Checks 
 
 ### Code Quality
 - [x] All tests passing (213/213 tests)
